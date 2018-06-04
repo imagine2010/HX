@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>凯撒密码</title>
+<script language="javascript">
+	function rot(){
+		//m是移位数
+		//var myselect = document.getElementById("myselect");
+		//var index = myselect.selectedIndex;
+		//var m = myselect.option[index].value;
+       var m=parseInt(casear.myselect.value) ;
+
+
+        
+        // console.log(m);
+    
+        //str是输入的字符串
+        var  oStr = document.getElementById("S1").value ;
+        var str = oStr.split("");
+        //alert(str);
+        // var  str1 = document.getElementById("S2") ;
+		var  str1 = [];
+		for (var i = 0; i < str.length; i++ ){
+			var num = str[i].charCodeAt(); 
+			if (num >= 65 && num <= 90) 
+				num = ((num - 65 + m ) % 26) + 65; 
+			else if (num >= 97 && num <= 122)
+				num = ((num - 97 + m) % 26 ) + 97;
+			str1.push(String.fromCharCode(num));
+		}
+		 var str2= str1.join("");
+		document.getElementById("S2").value = str2;
+	}  
+</script>
+</head>
+<body>
+<form name="casear">
+    <div align="center">
+        <table border="0" cellpadding="0" cellspacing="1" width="60%">
+            <tr>
+                <td width="25%" align="center">输入明文</td>
+                <td width="75%"><textarea rows="2" id="S1" cols="36"></textarea></td>
+            </tr>
+            <tr>
+                <td width="25%" align="center">显示结果</td>
+                <td width="75%"><textarea rows="2" id="S2" cols="36" readonly></textarea></td>
+            </tr>
+            <tr>
+                <td width="25%" align="center">选择密钥</td>
+                <td width="75%">
+                    <select size="1" name="myselect" id="myselect" onchange="">
+                        <option selected value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                    </select></td>
+            </tr>
+        </table>
+       </div>
+    <br>
+    <div align="center">
+    <input type="button"  value="加密" onclick="rot()"/>
+    </div>
+</form>
+</body>
+</html>
